@@ -112,9 +112,15 @@ In this project, you will build the reducer, actions and basic redux connects to
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers below.
 
 1. What problem does the context API help solve?
+Context API provides a way to share values between components without having to pass a prop through every level of the tree from parent to child.
 
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
 3. What does `redux-thunk` allow us to do? How does it change our `action-creators`?
+Keeps code dry and respects separation of concerns.
+Allows you to return a function as well as an object.
+Gives action creators access to dispatch and allows dispatch to happen asynchronously.
+Can call multiple dispatch with one action.
 
 4. What is your favorite state management system you've learned and this sprint? Please explain why!
+useState works best for me as i have not created anything on a large scale. It's perfect for smaller creations, easier to setup and modify.
