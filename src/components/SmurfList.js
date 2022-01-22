@@ -8,9 +8,11 @@ import {connect} from 'react-redux';
         return <h1>Loading...</h1>;
     }
 
-    return(<div className="listContainer">
-        <Smurf smurf={props.smurf}/>
-    </div>);
+    return(
+        <div className="listContainer">
+        {props.smurf.map( smurf => <Smurf id = {smurf.id}smurf={smurf}/>)}                
+        </div>
+    );
 }
 
 const mapStateToProps = (state) => {
