@@ -1,13 +1,7 @@
-import {START_FETCH} from '../actions/index';
+import {START_FETCH, SUCCESS_FETCH, FAIL_FETCH, ADD_SMURF, ADD_ERROR} from '../actions/index';
 
 export const initialState = {
-    smurf:{
-        id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-        name:'Poppa Smurf',
-        position:'Village Leader',
-        nickname: 'Pops',
-        description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
-    },
+    smurf:[],
     isLoading: false,
     error: ''
 }
@@ -17,20 +11,34 @@ const reducer = (state = initialState, action)=>{
         case START_FETCH:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                error: ''
             }
 
-        // case SUCCESS_FETCH:
-        //     return {
-        //         ...state,
+        case SUCCESS_FETCH:
+            return {
+                ...state,
+                smurf: action.payload,
+                error: ''
+            }
 
-        //     }
+        case FAIL_FETCH:
+            return {
+                ...state,
+                error: action.payload
+            }
 
-        // case FAIL_FETCH:
-        //     return {
-        //         ...state,
-        //     }
+        case ADD_SMURF:
+            return{
+                ...state,
+                smurf: [...state, action.payload]
+            }
 
+            case ADD_ERROR:
+            return({
+                ...state,
+                error:`${state.error}${action.payload}`
+            });
         default:
             return state
     }
